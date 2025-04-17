@@ -1,0 +1,15 @@
+@import "~/.cache/wal/colors-rofi-dark"
+
+configuration{
+    font: "MesloLGS Nerd Font Mono 20";
+    modi: "run";
+    matching:"fuzzy";
+    show-icons: true;
+    terminal: "alacritty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    sidebar-mode: true;
+}
+

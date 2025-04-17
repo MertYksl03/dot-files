@@ -1,0 +1,24 @@
+[global]
+font = Iosevka 10
+frame_color = "#bbccdd"
+separator_color = auto
+alignment = center
+offset = 10x50
+origin = top-right
+transparency = 10
+
+[urgency_low]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+timeout = 10
+
+[urgency_normal]
+background = "#1e1e2e"
+foreground = "#f5e0dc"
+timeout = 10
+
+[urgency_critical]
+background = "#ff5555"
+foreground = "#ffffff"
+frame_color = "#ff0000"
+timeout = 0
