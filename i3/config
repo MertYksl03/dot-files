@@ -45,7 +45,7 @@ font pango:Meslo LGM Nerd 10
 
 # Background
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/bg7.jpg
-exec --no-startup-id feh --bg-fill /home/mert/Pictures/00_current_wallpaper
+exec --no-startup-id feh --bg-fill /home/mert/Pictures/Wallpapers/00_current_wallpaper
 
 # Picom
 exec --no-startup-id picom -b 
@@ -142,6 +142,7 @@ bindsym Mod1+space exec --no-startup-id ~/.config/rofi/launch_rofi.sh
 
 # kill focused window
 bindsym $mod+q kill
+bindsym $mod+F4 kill # For the button on the mouse
 
 # lock the session (ALT + l)
 bindsym Mod1+l exec i3lock --nofork
