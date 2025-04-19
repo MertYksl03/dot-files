@@ -45,7 +45,7 @@ font pango:Meslo LGM Nerd 10
 
 # Background
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/bg7.jpg
-#exec --no-startup-id feh --bg-fill /home/mert/Pictures/b-222.jpg
+#exec --no-startup-id feh --bg-fill /home/mert/Pictures/current_wallpaper
 
 # Picom
 exec --no-startup-id picom -b 
