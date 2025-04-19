@@ -1,5 +1,5 @@
 [global]
-font = Iosevka 10
+font = CaskaydiaCove Nerd Font
 frame_color = "#bbccdd"
 separator_color = auto
 alignment = center
