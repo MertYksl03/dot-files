@@ -1,10 +1,11 @@
 #!/bin/bash
 
+TARGET_DECREASE=10
 STEPS=10
-STEP_SIZE=1
+STEP_PERCENT=$((TARGET_DECREASE / STEPS))  # Percentage per step
 
 for i in $(seq 1 $STEPS); do
-    brightnessctl set "$STEP_SIZE"%- > /dev/null
+    brightnessctl set "$STEP_PERCENT"%- > /dev/null
     CURRENT=$(brightnessctl g)
     MAX=$(brightnessctl m)
     PERCENT=$((CURRENT * 100 / MAX))
