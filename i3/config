@@ -106,12 +106,12 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 
 
-#############################
-##### MOUSE AND TOUCHPAD#####
-#############################
+##############################
+##### MOUSE AND TOUCHPAD #####
+##############################
 
 # Turn of the mouse acceleration and change the pointer speed
-exec --no-startup-id xinput --set-prop "Logitech G300s Optical Mouse" "libinput Accel Profile Enabled" 0 1
+exec --no-startup-id xinput --set-prop "Logitech G300s Optical Gaming Mouse" "libinput Accel Profile Enabled" 0 1
 exec --no-startup-id xinput --set-prop "Logitech G300s Optical Gaming Mouse" "libinput Accel Speed" 0.6
 # Shortcut for toggling touchpad
 bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/scripts/toggle-touchpad.sh
@@ -142,19 +142,18 @@ bindsym Mod1+space exec --no-startup-id ~/.config/rofi/launch_rofi.sh
 # kill focused window
 bindsym $mod+q kill
 
+# SYSTEM STUFF
+
 # lock the session (ALT + l)
 bindsym Mod1+l exec i3lock --nofork
 
 # lock and suspend (SUPER + ALT + l)
 bindsym $mod+Mod1+l exec i3lock --nofork & systemctl suspend
 
-# start dmenu (a program launcher)
-#bindsym Mod1+space exec --no-startup-id dmenu_run 
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+# Force log out the session (CONTROL + ALT + DEL)
+bindsym Ctrl+Mod1+Delete exec "pkill -KILL -u $USER"
+
+# NAVIGATION
 
 # change focus
 bindsym $mod+j focus left
