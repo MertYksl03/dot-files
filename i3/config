@@ -43,9 +43,12 @@ font pango:CaskaydiaCove Nerd Font 10
 ##### STARTUP PROGRAMS #####
 ############################
 
+# Pywal - randomly select a wallpaper and setup the colors
+exec --no-startup-id ~/scripts/randomwallpaper
+
 # Background
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/bg7.jpg
-exec --no-startup-id feh --bg-fill /home/mert/Pictures/Wallpapers/00_current_wallpaper
+#exec --no-startup-id feh --bg-fill /home/mert/Pictures/Wallpapers/00_current_wallpaper
 
 # Picom
 exec --no-startup-id picom -b 
