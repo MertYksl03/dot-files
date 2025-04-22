@@ -146,6 +146,10 @@ bindsym Mod1+space exec --no-startup-id ~/.config/rofi/launch_rofi.sh
 # kill focused window
 bindsym $mod+q kill
 
+# force kill focused window
+bindsym $mod+Shift+Ctrl+q exec --no-startup-id bash -c 'kill -9 $(xdotool getwindowpid $(xdotool getwindowfocus))'
+
+
 # SYSTEM STUFF
 
 # lock the session (ALT + l)

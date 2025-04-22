@@ -1,0 +1,24 @@
+[global]
+font = CaskaydiaCove Nerd Font
+frame_color = "{color4}"           ; was #bbccdd
+separator_color = auto
+alignment = center
+offset = 10x50
+origin = top-right
+transparency = 10
+
+[urgency_low]
+background = "{color0}"            ; was #1e1e2e
+foreground = "{color7}"            ; was #cdd6f4
+timeout = 10
+
+[urgency_normal]
+background = "{color0}"            ; was #1e1e2e
+foreground = "{color6}"            ; was #f5e0dc
+timeout = 10
+
+[urgency_critical]
+background = "{color1}"            ; was #ff5555
+foreground = "{color15}"           ; was #ffffff
+frame_color = "{color1}"           ; was #ff0000
+timeout = 0
