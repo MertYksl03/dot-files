@@ -43,6 +43,9 @@ font pango:CaskaydiaCove Nerd Font 10
 ##### STARTUP PROGRAMS #####
 ############################
 
+# Polkit
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
 # Pywal - randomly select a wallpaper and setup the colors
 exec --no-startup-id ~/scripts/randomwallpaper
 
