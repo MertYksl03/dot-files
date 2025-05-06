@@ -168,7 +168,7 @@ bindsym $mod+Shift+Ctrl+q exec --no-startup-id bash -c 'kill -9 $(xdotool getwin
 bindsym Mod1+l exec i3lock --nofork
 
 # lock and suspend (SUPER + ALT + l)
-bindsym $mod+Mod1+l exec i3lock --nofork & systemctl suspend
+bindsym $mod+Mod1+l exec systemctl suspend
 
 # Force log out the session (CONTROL + ALT + DEL)
 bindsym Ctrl+Mod1+Delete exec "pkill -KILL -u $USER"
