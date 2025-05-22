@@ -31,49 +31,15 @@ set $terminal alacritty
 set $browser google-chrome-stable
 set $file_manager nautilus
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:CaskaydiaCove Nerd Font 10
-
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
+font pango:CaskaydiaCove Nerd Font 10
+
 
 ############################
 ##### STARTUP PROGRAMS #####
 ############################
-
-# Polkit
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-# Pywal - randomly select a wallpaper and setup the colors
-exec --no-startup-id ~/scripts/randomwallpaper
-
-# Background
-# exec_always --no-startup-id feh --bg-fill ~/Pictures/bg7.jpg
-#exec --no-startup-id feh --bg-fill /home/mert/Pictures/Wallpapers/00_current_wallpaper
-
-# Picom
-exec --no-startup-id picom -b 
-
-# Polybar
-exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
-
-# Autotiling 
-exec_always --no-startup-id autotiling -w 1 3 5 7 9
-
-# Network Manager Applet
-exec --no-startup-id nm-applet
-
-# Bluetooth Manager Applet 
-exec --no-startup-id blueman-applet
-
-# Clipboard
-exec --no-startup-id xclip
-
-# Printscreen
-bindsym Print exec --no-startup-id flameshot gui
-
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -88,6 +54,49 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+
+# Bluetooth Manager Applet
+exec --no-startup-id blueman-applet
+
+# Picom
+exec --no-startup-id picom -b
+
+# Polkit
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Polybar
+exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
+
+# Autotiling
+exec_always --no-startup-id autotiling -w 1 3 5 7 9
+
+# Clipboard
+exec --no-startup-id xclip
+
+# Printscreen
+bindsym Print exec --no-startup-id flameshot gui
+
+# Emacs Daemon
+exec --no-startup-id /usr/bin/emacs -daemon
+
+# Pywal - randomly select a wallpaper and setup the colors
+exec --no-startup-id ~/scripts/randomwallpaper
+
+# Background
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/bg7.jpg
+#exec --no-startup-id feh --bg-fill /home/mert/Pictures/Wallpapers/00_current_wallpaper
+
+##############################
+##### MOUSE AND TOUCHPAD #####
+##############################
+
+# Turn of the mouse acceleration and change the pointer speed
+exec --no-startup-id xinput --set-prop "Logitech G300s Optical Gaming Mouse" "libinput Accel Profile Enabled" 0 1
+exec --no-startup-id xinput --set-prop "Logitech G300s Optical Gaming Mouse" "libinput Accel Speed" 0.6
+
+# Disable the touchpad on startup (if I need it, I will turn it on)
+exec --no-startup-id ~/.config/i3/scripts/toggle-touchpad.sh off
+
 
 ################################
 ##### KEYBINDS FOR FN KEYS #####
@@ -116,21 +125,6 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
-
-
-##############################
-##### MOUSE AND TOUCHPAD #####
-##############################
-
-# Turn of the mouse acceleration and change the pointer speed
-exec --no-startup-id xinput --set-prop "Logitech G300s Optical Gaming Mouse" "libinput Accel Profile Enabled" 0 1
-exec --no-startup-id xinput --set-prop "Logitech G300s Optical Gaming Mouse" "libinput Accel Speed" 0.6
-
-# Disable the touchpad on startup (if I need it, I will turn it on)
-exec --no-startup-id ~/.config/i3/scripts/toggle-touchpad.sh off
-
-# Shortcut for toggling touchpad
-bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/scripts/toggle-touchpad.sh
 
 #######################
 ##### KEYBINDINGS #####
@@ -164,14 +158,18 @@ bindsym $mod+Shift+Ctrl+q exec --no-startup-id bash -c 'kill -9 $(xdotool getwin
 
 # SYSTEM STUFF
 
-# lock the session (ALT + l)
-bindsym Mod1+l exec i3lock --nofork
+# lock the session (Ctrl + l)
+bindsym Ctrl+l exec i3lock --nofork
 
-# lock and suspend (SUPER + ALT + l)
-bindsym $mod+Mod1+l exec systemctl suspend
+# lock and suspend (SUPER + Ctrl + l)
+bindsym $mod+Ctrl+l exec systemctl suspend
 
 # Force log out the session (CONTROL + ALT + DEL)
 bindsym Ctrl+Mod1+Delete exec "pkill -KILL -u $USER"
+
+# Shortcut for toggling touchpad
+bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/scripts/toggle-touchpad.sh
+
 
 # NAVIGATION
 
