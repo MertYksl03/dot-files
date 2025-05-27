@@ -3,7 +3,7 @@
 configuration{
     font: "CaskaydiaCove Nerd Font 20";
     modi: "run";
-    matching:"fuzzy";
+/* 	matching:"fuzzy"; */
     show-icons: true;
     terminal: "alacritty";
     drun-display-format: "{icon} {name}";
