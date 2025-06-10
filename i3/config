@@ -244,6 +244,8 @@ set $ws10 "10"
 
 # cycle through workspaces
 bindsym $mod+Tab workspace next
+# cycle backwards
+bindsym $mod+Shift+Tab workspace prev
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
