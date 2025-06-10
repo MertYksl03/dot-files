@@ -82,6 +82,12 @@ exec --no-startup-id /usr/bin/emacs -daemon
 # Pywal - randomly select a wallpaper and setup the colors
 exec --no-startup-id ~/scripts/randomwallpaper
 
+# For changing language input
+exec --no-startup-id "setxkbmap -layout tr,us -option grp:alt_shift_toggle"
+
+# Blue light filter
+exec --no-startup-id redshift
+
 # Background
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/bg7.jpg
 #exec --no-startup-id feh --bg-fill /home/mert/Pictures/Wallpapers/00_current_wallpaper
@@ -158,11 +164,11 @@ bindsym $mod+Shift+Ctrl+q exec --no-startup-id bash -c 'kill -9 $(xdotool getwin
 
 # SYSTEM STUFF
 
-# lock the session (Ctrl + l)
-bindsym Ctrl+l exec i3lock --nofork
+# lock the session (SUPER + ESC)
+bindsym $mod+Escape exec i3lock --nofork
 
-# lock and suspend (SUPER + Ctrl + l)
-bindsym $mod+Ctrl+l exec systemctl suspend
+# lock and suspend (SUPER + SHIFT + ESC)
+bindsym $mod+Shift+Escape exec systemctl suspend
 
 # Force log out the session (CONTROL + ALT + DEL)
 bindsym Ctrl+Mod1+Delete exec "pkill -KILL -u $USER"
@@ -235,6 +241,9 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+# cycle through workspaces
+bindsym $mod+Tab workspace next
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
