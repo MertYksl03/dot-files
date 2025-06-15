@@ -7,6 +7,14 @@ offset = 10x50
 origin = top-right
 transparency = 10
 
+[volume]
+appname = "notify-send"
+urgency = low
+
+[brightness]
+appname = "notify-send"
+urgency = low
+
 [urgency_low]
 background = "{color0}"            ; was #1e1e2e
 foreground = "{color7}"            ; was #cdd6f4

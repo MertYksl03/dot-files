@@ -7,6 +7,14 @@ offset = 10x50
 origin = top-right
 transparency = 10
 
+[volume]
+    appname = "notify-send"
+    urgency = low
+
+[brigthness]
+    appname = "notify-send"
+    urgency = low
+
 [urgency_low]
 background = "#ffffff"
 foreground = "#cdd6f4"
