@@ -30,6 +30,7 @@ set $mod Mod4
 set $terminal alacritty
 set $browser google-chrome-stable
 set $file_manager nautilus
+set $lock_screen_run betterlockscreen -l
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -49,7 +50,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock_screen_run
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -83,7 +84,7 @@ exec --no-startup-id /usr/bin/emacs -daemon
 exec --no-startup-id ~/scripts/randomwallpaper
 
 # For changing language input
-exec --no-startup-id "setxkbmap -layout tr,us -option grp:alt_shift_toggle"
+# exec --no-startup-id "setxkbmap -layout tr,us -option grp:alt_shift_toggle"
 
 # Blue light filter
 exec --no-startup-id redshift
@@ -165,7 +166,7 @@ bindsym $mod+Shift+Ctrl+q exec --no-startup-id bash -c 'kill -9 $(xdotool getwin
 # SYSTEM STUFF
 
 # lock the session (SUPER + ESC)
-bindsym $mod+Escape exec i3lock --nofork
+bindsym $mod+Escape exec $lock_screen_run
 
 # lock and suspend (SUPER + SHIFT + ESC)
 bindsym $mod+Shift+Escape exec systemctl suspend
