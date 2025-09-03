@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+FOLDER=~/Pictures/Wallpapers
+SCRIPT=~/.config/dunst/wal.sh
+CURRENT="$FOLDER/00_current_wallpaper"
+
+copy_wallpaper() {
+    [[ -f "$1" ]] && cp "$1" "$CURRENT"
+}
+# Pick a random wallpaper
+RANDOM_FILE=$(find "$FOLDER" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.webp" \) | shuf -n 1)
+
+if [[ -f "$RANDOM_FILE" ]]; then
+    # Apply wallpaper and pywal
+    wal -i "$RANDOM_FILE" -o "$SCRIPT"
+
+    # Save current wallpaper
+    copy_wallpaper "$RANDOM_FILE"
+
+	# Create the cache for betterlockscreen
+    betterlockscreen -u ~/Pictures/Wallpapers/00_current_wallpaper --fx
+fi
+
