@@ -89,9 +89,6 @@ exec --no-startup-id /usr/bin/emacs -daemon
 # Pywal - randomly select a wallpaper and setup the colors
 exec --no-startup-id ~/scripts/randomwallpaper
 
-# For changing language input
-exec --no-startup-id "setxkbmap -layout tr,us -option grp:alt_shift_toggle"
-
 # Blue light filter
 exec --no-startup-id redshift
 
@@ -183,7 +180,13 @@ bindsym $mod+Shift+Escape exec systemctl suspend
 bindsym Ctrl+Mod1+Delete exec "pkill -KILL -u $USER"
 
 # Shortcut for toggling touchpad
-bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/scripts/toggle-touchpad.sh
+bindsym $mod+Shift+t exec --no-startup-id $scripts_dir/toggle-touchpad.sh
+
+# Change Keyboard layout
+bindsym Ctrl+space exec --no-startup-id $scripts_dir/toggle_keyb_layout.sh
+
+# Wallpapermenu
+bindsym $mod+Shift+w exec --no-startup-id  ~/dot-files/scripts/wallpapermenu
 
 
 # NAVIGATION
@@ -314,6 +317,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+####################
+### WINDOW RULES ###
+####################
+
+# to open wallpaper menu floating
+for_window [class="Nsxiv"] floating enable
 
 ##########
 # Custom #
