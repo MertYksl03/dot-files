@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+# slightly scuffed wallpaper picker menu for use with pywal - uses nsxiv if installed, otherwise uses dmenu
+
+FOLDER=~/Pictures/Wallpapers # wallpaper folder
+SCRIPT=~/.config/dunst/wal.sh # script to restart the dunst with the new color palette
+
+# Create cache for betterlockscreen
+create_bls_cache() {
+	betterlockscreen -u ~/Pictures/Wallpapers/00_current_wallpaper --fx
+}
+
+# Copy the selected wallpaper to current_wallpaper file 
+# So the background still be the same after reboot
+copy_wallpaper() {
+	[[ -f "$1" ]] && cp "$1" "$FOLDER/00_current_wallpaper"
+}
+
+menu () {
+		if command -v nsxiv >/dev/null; then 
+				CHOICE=$(nsxiv -otb $FOLDER/*)
+		else 
+				CHOICE=$(echo -e "Random\n$(command ls -v $FOLDER)" | dmenu -c -l 15 -i -p "Wallpaper: ")
+		fi
+
+case $CHOICE in
+		Random)
+			wal -i "$FOLDER" -o "$SCRIPT"
+			# Pick a random file and copy it
+			RANDOM_FILE=$(find "$FOLDER" -type f | shuf -n 1)
+			copy_wallpaper "$RANDOM_FILE"
+			create_bls_cache	
+			;;
+		*.*)
+			wal -i "$CHOICE" -o "$SCRIPT"
+			copy_wallpaper "$CHOICE"
+			create_bls_cache
+			;;
+		*)
+			exit 0
+			;;
+	esac
+}	
+# If given arguments:
+# First argument will be used by pywal as wallpaper/dir path
+# Second will be used as theme (use wal --theme to view built-in themes)
+case "$#" in
+	0) menu ;;
+	1)
+		wal -i "$1" -o "$SCRIPT"
+		copy_wallpaper "$1"
+		create_bls_cache
+		;;
+	2)
+		wal -i "$1" --theme "$2" -o "$SCRIPT"
+		copy_wallpaper "$1"
+		create_bls_cache
+		;;
+	*)
+		exit 0
+		;;
+esac
