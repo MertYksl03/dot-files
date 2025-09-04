@@ -71,6 +71,9 @@ exec --no-startup-id picom -b
 # Polkit
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
+# Pywal - randomly select a wallpaper and setup the colors
+exec --no-startup-id ~/dot-files/scripts/randomwallpaper
+
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 
@@ -85,9 +88,6 @@ bindsym Print exec --no-startup-id flameshot gui
 
 # Emacs Daemon
 exec --no-startup-id /usr/bin/emacs -daemon
-
-# Pywal - randomly select a wallpaper and setup the colors
-exec --no-startup-id ~/scripts/randomwallpaper
 
 # Blue light filter
 exec --no-startup-id redshift
