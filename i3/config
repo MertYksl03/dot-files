@@ -150,19 +150,52 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym Ctrl+Return exec $terminal
+bindsym $mod+Return exec $terminal
 
 # start the browser
-bindsym $mod+Return exec $browser
+bindsym $mod+b exec $browser
 
 # start the file manager
-bindsym $mod+d exec $file_manager
+bindsym $mod+x exec $file_manager
+
+# start whatsapp
+bindsym $mod+w exec $browser --app=https://web.whatsapp.com
+
+# start mail
+bindsym $mod+m exec $browser --app=https://mail.google.com/mail/u/0/\#inbox
+
+# start mail-other-account
+bindsym $mod+Shift+m exec $browser --app=https://mail.google.com/mail/u/1/\#inbox
+
+# start youtube
+bindsym $mod+y exec $browser --app=https://youtube.com
+
+# start youtube-music
+bindsym $mod+Shift+y exec $browser --app=https://music.youtube.com
+
+# start google-drive
+bindsym $mod+d exec $browser --app=https://drive.google.com/drive/my-drive
+
+# start chatgpt
+bindsym $mod+c exec $browser --app=https://chat.com
+
+# start gemini
+bindsym $mod+g exec $browser --app=https://gemini.google.com
+
+# start spotify
+bindsym $mod+p exec spotify
+
+# start tetris
+bindsym $mod+t exec $browser --app=https://play.tetris.com
 
 # rofi
 bindsym Mod1+space exec --no-startup-id ~/.config/rofi/launch_rofi.sh
 
 # kill focused window
 bindsym $mod+q kill
+
+# Close all windows on all workspaces (any class string)
+bindsym $mod+Shift+q [class=".*"] kill, workspace number $ws1
 
 # force kill focused window
 bindsym $mod+Shift+Ctrl+q exec --no-startup-id bash -c 'kill -9 $(xdotool getwindowpid $(xdotool getwindowfocus))'
@@ -183,7 +216,7 @@ bindsym Ctrl+Mod1+Delete exec "pkill -KILL -u $USER"
 bindsym $mod+Shift+t exec --no-startup-id $scripts_dir/toggle-touchpad.sh
 
 # Change Keyboard layout
-bindsym Ctrl+space exec --no-startup-id $scripts_dir/toggle_keyb_layout.sh
+# bindsym Ctrl+space exec --no-startup-id $scripts_dir/toggle_keyb_layout.sh
 
 # Wallpapermenu
 bindsym $mod+Shift+w exec --no-startup-id  ~/dot-files/scripts/wallpapermenu
@@ -226,7 +259,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+ Mod1 + w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -288,7 +321,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Ctrl+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -323,6 +356,12 @@ bindsym $mod+r mode "resize"
 
 # to open wallpaper menu floating
 for_window [class="Nsxiv"] floating enable
+
+# open music apps on the workspace 10
+for_window [class="Spotify"] exec --no-startup-id i3-msg workspace 10
+assign [title="Spotify"] workspace 10
+for_window [title="music.youtube.com"] exec --no-startup-id i3-msg workspace 10
+assign [title="music.youtube.com"] workspace 10
 
 ##########
 # Custom #
