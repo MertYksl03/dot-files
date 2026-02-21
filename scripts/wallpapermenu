@@ -12,7 +12,7 @@ pkill -f "nsxiv -otb $FOLDER"
 
 # Create cache for betterlockscreen
 create_bls_cache() {
-	betterlockscreen -u ~/Pictures/Wallpapers/00_current_wallpaper --fx
+	betterlockscreen -u ~/Pictures/Wallpapers/00_current_wallpaper  --blur 0.5
 }
 
 # Copy the selected wallpaper to current_wallpaper file 

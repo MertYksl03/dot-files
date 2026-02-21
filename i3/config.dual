@@ -1,0 +1,58 @@
+include $HOME/.config/i3/workspaces.conf
+include $HOME/.config/i3/keybinds.conf
+include $HOME/.config/i3/rules.conf
+include $HOME/.config/i3/startup.conf
+include $HOME/.config/i3/modes.conf
+include $HOME/.config/i3/dual-screen.conf
+
+
+# Colors from PyWall
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+#client.focused_inactive $bg     $bg     $fg  $bg       $bg
+#client.unfocused        $bg     $bg     $fg  $bg       $bg
+#client.urgent           $bg     $bg     $fg  $bg       $bg
+#client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
+
+############################
+### DEFAULT APPLICATIONS ###
+############################
+set $terminal alacritty
+set $browser google-chrome-stable
+set $file_manager nautilus
+set $lock_screen_run betterlockscreen -l
+
+#################
+### CONSTANTS ###
+#################
+set $scripts_dir ~/.config/i3/scripts/
+set $mouse Logitech G300s Optical Gaming Mouse
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:CaskaydiaCove Nerd Font 10
+
+
+##############################
+##### MOUSE AND TOUCHPAD #####
+##############################
+
+# Turn of the mouse acceleration and change the pointer speed
+exec --no-startup-id xinput --set-prop $mouse "libinput Accel Profile Enabled" 0 1
+exec --no-startup-id xinput --set-prop $mouse "libinput Accel Speed" 0.6
+
+# Disable the touchpad on startup (if I need it, I will turn it on)
+exec --no-startup-id $scripts_dir/toggle-touchpad.sh off
+
+
