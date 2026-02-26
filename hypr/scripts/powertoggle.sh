@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Get the current state of animations (1 = enabled, 0 = disabled)
-STATUS=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
+STATUS=$(hyprctl getoption decoration:blur:enabled | awk 'NR==1{print $2}')
 
 if [ "$STATUS" = "1" ]; then
     # Disable everything for battery saving
