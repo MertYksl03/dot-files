@@ -2,9 +2,9 @@
 
 STATUS_FILE="$XDG_RUNTIME_DIR/touchpad.status"
 
-# If the file doesn't exist, assume the touchpad is enabled (default boot state)
+# If the file doesn't exist, assume the touchpad is disabled (default boot state)
 if [ ! -f "$STATUS_FILE" ]; then
-    echo "true" > "$STATUS_FILE"
+    echo "false" > "$STATUS_FILE"
 fi
 
 STATUS=$(cat "$STATUS_FILE")
