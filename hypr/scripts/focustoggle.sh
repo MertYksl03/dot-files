@@ -8,7 +8,7 @@ if [ "$STATUS" = "1" ]; then
     hyprctl --batch "\
         keyword animations:enabled 0; \
         keyword misc:vfr 1"
-    
+    qs -c noctalia-shell ipc call powerProfile enableNoctaliaPerformance
     notify-send -u low -t 2000 "Hyprland" "Focus mode: ON"
 else
     # Re-enable animations for Causal mode
@@ -16,5 +16,6 @@ else
         keyword animations:enabled 1; \
         keyword misc:vfr 1"
 
+    qs -c noctalia-shell ipc call powerProfile disableNoctaliaPerformance
     notify-send -u low -t 2000 "Hyprland" "Focus mode: OFF "
 fi

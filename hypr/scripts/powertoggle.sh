@@ -11,7 +11,8 @@ if [ "$STATUS" = "1" ]; then
         keyword decoration:blur:enabled 0; \
         keyword decoration:drop_shadow 0; \
         keyword misc:vfr 1"
-    
+   
+    qs -c noctalia-shell ipc call powerProfile enableNoctaliaPerformance
     notify-send -u low -t 2000 "Hyprland" "Power Saving: ON (Performance Mode)"
 else
     # Re-enable everything for "Eye Candy" mode
@@ -21,6 +22,6 @@ else
         keyword decoration:blur:enabled 1; \
         keyword decoration:drop_shadow 1; \
         keyword misc:vfr 1"
-
+    qs -c noctalia-shell ipc call powerProfile disableNoctaliaPerformance
     notify-send -u low -t 2000 "Hyprland" "Power Saving: OFF (Eye Candy Mode)"
 fi
