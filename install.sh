@@ -123,6 +123,9 @@ PACMAN_PACKAGES=(
     # ── Display manager ──
     sddm                             # Login manager
 
+    # ── Power management ──
+    tlp
+
     # ── Networking ──
     networkmanager
     bluez
@@ -168,6 +171,30 @@ for pkg in "${AUR_PACKAGES[@]}"; do
     fi
 done
 success "AUR packages installed."
+
+# ══════════════════════════════════════════════════════════════════
+# 4.5 ENABLE REQUIRED SERVICES
+# ══════════════════════════════════════════════════════════════════
+step "4.5/8 · Enabling required services"
+
+info "Enabling required services..."
+
+# Display manager
+run "sudo systemctl enable sddm"
+
+# Networking
+run "sudo systemctl enable NetworkManager"
+
+# Bluetooth
+run "sudo systemctl enable bluetooth"
+
+# Power management
+run "sudo systemctl enable tlp"
+
+# Audio
+run "sudo systemctl enable pipewire-pulse.service"
+run "sudo systemctl enable wireplumber.service"
+success "Required services enabled."
 
 # ══════════════════════════════════════════════════════════════════
 # 5. SETUP ZSH + OH-MY-ZSH + PLUGINS + POWERLEVEL10K
@@ -269,14 +296,6 @@ link "$DOTFILES_DIR/hypr" "$CONFIG_DIR/hypr"
 run "mkdir -p $CONFIG_DIR/alacritty"
 link "$DOTFILES_DIR/alacritty/alacritty.toml" "$CONFIG_DIR/alacritty/alacritty.toml"
 
-# ── Dunst ──
-run "mkdir -p $CONFIG_DIR/dunst"
-link "$DOTFILES_DIR/dunst/dunstrc" "$CONFIG_DIR/dunst/dunstrc"
-link "$DOTFILES_DIR/dunst/wal.sh"  "$CONFIG_DIR/dunst/wal.sh"
-
-# ── Rofi ──
-link "$DOTFILES_DIR/rofi" "$CONFIG_DIR/rofi"
-
 # ── Noctalia Shell ──
 # Noctalia stores its config in ~/.config/noctalia-shell/
 run "mkdir -p $CONFIG_DIR/noctalia-shell"
@@ -294,11 +313,6 @@ fi
 run "mkdir -p $CONFIG_DIR/neofetch"
 link "$DOTFILES_DIR/neofetch/config.conf" "$CONFIG_DIR/neofetch/config.conf"
 
-# ── Pywal templates & colorschemes ──
-run "mkdir -p $CONFIG_DIR/wal"
-link "$DOTFILES_DIR/wal/templates"    "$CONFIG_DIR/wal/templates"
-link "$DOTFILES_DIR/wal/colorschemes" "$CONFIG_DIR/wal/colorschemes"
-
 # ── Zsh ──
 link "$DOTFILES_DIR/zsh/zshrc" "$HOME/.zshrc"
 
@@ -306,7 +320,6 @@ link "$DOTFILES_DIR/zsh/zshrc" "$HOME/.zshrc"
 if ! $DRY_RUN; then
     chmod +x "$DOTFILES_DIR/scripts/"* 2>/dev/null || true
     chmod +x "$DOTFILES_DIR/hypr/scripts/"* 2>/dev/null || true
-    chmod +x "$DOTFILES_DIR/dunst/wal.sh" 2>/dev/null || true
 fi
 success "Scripts marked as executable."
 
